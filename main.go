@@ -28,7 +28,7 @@ Documentation is for users.
 Don't panic.`
 
 	for i, line := range strings.Split(proverbs, "\n") {
-		words := strings.Split(line, " ")
+		words := strings.Fields(line)
 		fmt.Printf("%d: %s (WC: %d)\n", i+1, line, len(words))
 	}
 }
