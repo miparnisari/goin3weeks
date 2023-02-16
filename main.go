@@ -2,27 +2,33 @@ package main
 
 import (
 	"fmt"
-	"github.com/jboursiquot/go-proverbs"
+	"strings"
 )
-
-const location = "Remote"
-
-var name string
 
 func main() {
 
-	name = "maria"
-	from := `Canada`
-	var n int
+	proverbs := `Don't communicate by sharing memory, share memory by communicating.
+Concurrency is not parallelism.
+Channels orchestrate; mutexes serialize.
+The bigger the interface, the weaker the abstraction.
+Make the zero value useful.
+interface{} says nothing.
+Gofmt's style is no one's favorite, yet gofmt is everyone's favorite.
+A little copying is better than a little dependency.
+Syscall must always be guarded with build tags.
+Cgo must always be guarded with build tags.
+Cgo is not Go.
+With the unsafe package there are no guarantees.
+Clear is better than clever.
+Reflection is never clear.
+Errors are values.
+Don't just check errors, handle them gracefully.
+Design the architecture, name the components, document the details.
+Documentation is for users.
+Don't panic.`
 
-	var proverb = "Undefined"
-	if p, err := proverbs.Nth(4); err == nil {
-		proverb = p.Saying
+	for i, line := range strings.Split(proverbs, "\n") {
+		words := strings.Split(line, " ")
+		fmt.Printf("%d: %s (WC: %d)\n", i+1, line, len(words))
 	}
-
-	fmt.Printf("Hello, fellow %s Gophers!\n", location)
-	fmt.Printf("My name is %s and I'm from %s.\n", name, from)
-	fmt.Printf("By the time %d o'clock EST comes around, we'll know how to code in Go!\\n", n)
-	fmt.Printf("Here's a Go proverb: %s\n", proverb)
-	fmt.Println("Let's get started!")
 }
